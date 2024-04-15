@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>219970204 作业1内容</title>
+    <script>
+        function printStars(count) {
+            document.write("*".repeat(count) + "<br>");
+        }
+
+        //三角
+        function printTriangle(height) {
+            for (let i = 1; i <= height; i++) {
+                printStars(i);
+            }
+        }
+
+        //平行四边形
+        function printParallelogram(height) {
+            for (let i = 1; i <= height; i++) {
+                document.write("&nbsp;".repeat(height - i) + "*".repeat(height) + "<br>");
+            }
+        }
+
+        //菱形
+        function printDiamond(height) {
+            for (let i = 1; i <= height; i++) {
+                document.write("&nbsp;".repeat(height - i) + "*".repeat(2 * i - 1) + "<br>");
+            }
+            for (let i = height - 1; i >= 1; i--) {
+                document.write("&nbsp;".repeat(height - i) + "*".repeat(2 * i - 1) + "<br>");
+            }
+        }
+
+        document.write("<h3>三角形:</h3>");
+        printTriangle(5);
+        document.write("<h3>平行四边形:</h3>");
+        printParallelogram(5);
+        document.write("<h3>菱形:</h3>");
+        printDiamond(3);
+        //219970204 方裕森
+    </script>
+</head>
+<body>
+</body>
+</html>
+
+
