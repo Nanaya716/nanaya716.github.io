@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style></style>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <script>
+        // 关闭对联广告
+        function closead(side) {
+            var ad = document.getElementById("Ad" + side);
+            ad.style.display = "none";
+        }
+    </script>
+    <div class="content">
+        <!-- 正文 -->
+        测试测试测试测试测试测试测试测试测试测试测试测试测试
+    </div>
+
+    <div id="Adleft" class="Adleft">对联广告左
+        <img src="img/cover_waifu2x_4x_3n_png.png" alt="对联广告左">
+        <span><a href="#" onclick="closead('left');">关闭</a></span>
+    </div>
+    <div id="Adright" class="Adright">对联广告右
+        <img src="img/cover_waifu2x_4x_3n_png.png" alt="对联广告左">
+        <span><a href="#" onclick="closead('right');">关闭</a></span>
+    </div>
+    <div id="Adwindow" class="Adwindow">广告窗口
+        <img src="img/cover_waifu2x_4x_3n_png.png" alt="窗口广告">
+        <span><a href="#" onclick="closead('window');">关闭</a></span>
+    </div>
+</body>
+
+</html>

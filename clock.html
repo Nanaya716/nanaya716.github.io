@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function updateClock() {
+          var now = new Date();
+          var hours = now.getHours().toString().padStart(2, '0');
+          var minutes = now.getMinutes().toString().padStart(2, '0');
+          var seconds = now.getSeconds().toString().padStart(2, '0');
+          var timeString = hours + ":" + minutes + ":" + seconds;
+          document.getElementById('clock').textContent = timeString;
+        }
+        
+        // 初始加载页面时先调用一次更新时间
+        updateClock();
+        
+        // 每秒钟更新一次时间
+        setInterval(updateClock, 1000);
+</body>
+</html>
