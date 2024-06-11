@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>今日油价</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h2>ajax测试</h2>
+    <!-- <label for="usernameInput">用户名</label> -->
+    <!-- <input type="text" id="telno" name="username"> -->
+    <button id="button">访问接口</button>
+    <div id="Message"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#button').on('click', function () {
+                a2().then(result => {
+                    console.log(result)
+                    $('#Message').empty();
+                    var events = result.data;
+                    var eventHtml = '<div class="event">';
+                    eventHtml += '<p>省份: ' + events.province + '</p>';
+                    eventHtml += '<p>t0: ' + events.t0 + '</p>';
+                    eventHtml += '<p>t89: ' + events.t89 + '</p>';
+                    eventHtml += '<p>t92: ' + events.t92 + '</p>';
+                    eventHtml += '<p>t95: ' + events.t95 + '</p>';
+                    eventHtml += '<p>t98: ' + events.t98 + '</p>';
+                    eventHtml += '</div>';
+                    $('#Message').append(eventHtml);
+                }).catch(error => {
+                    console.error('Error:', error);
+                    $('#usernameMessage').html('<p>错误: ' + error + '</p>'); // 显示错误消息
+                });
+
+            })
+        })
+
+        async function a2() {
+            const app_id = 'nsllmrklruialipt';
+            const app_secret = 'RXRiVGVCVWVUTzhCZkF1bjJseXlLUT09';
+            const province = '重庆'
+            const url = `https://www.mxnzp.com/api/oil/search?app_id=${app_id}&app_secret=${app_secret}&province=${province}`;
+
+            var rep = await fetch(url, {
+                mode: 'cors'
+            });
+            var result = await rep.json();
+            return result;
+            //result因为async关键字会变成promise对象
+        }
+
+        // var a2 = a2();
+        // a2.then(r => {
+        //     console.log(r)
+        // })
+        //   219970204 方裕森
+    </script>
+</body>
+
+</html>

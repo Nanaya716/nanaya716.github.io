@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX检测用户名</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h2>ajax测试</h2>
+    <!-- <label for="usernameInput">用户名</label> -->
+    <!-- <input type="text" id="telno" name="username"> -->
+    <button id="button">访问接口</button>
+    <div id="usernameMessage"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#button').on('click', function () {
+                var myno = $('#telno').val();
+                if (myno != '') {
+                    // 发送 Ajax 请求
+                    $.ajax({
+                        url: 'https://mxnzp.com/api/history/today', // 后端接口地址
+                        method: 'get',
+                        data: {
+                            app_id: 'nsllmrklruialipt',
+                            app_secret: 'RXRiVGVCVWVUTzhCZkF1bjJseXlLUT09',
+                        },
+                        dataType: "json",
+                        success: function (response) {
+                            console.log(response.data)
+                            // document.getElementById('usernameMessage').innerHTML = '<p>成功: ' + JSON.stringify(response) + '</p>';
+                            $('#usernameMessage').empty();
+                        
+                            var events = response.data;
+                            events.forEach(function(event) {
+                                var eventHtml = '<div class="event">';
+                                eventHtml = eventHtml + '<img src="' + event.picUrl + '">';
+                                eventHtml = eventHtml + '<p>标题: ' + event.title + '</p>';
+                                eventHtml = eventHtml + '<p>日期: ' + event.year + '年' + event.month + '月' + event.day + '日</p>';
+                                eventHtml = eventHtml + '</div>';
+                                $('#usernameMessage').append(eventHtml);
+                            })
+                        }
+                    });
+                } else {
+                    $('#usernameMessage').text('查询错误').css('color', 'green');
+                }
+            });
+        });
+
+        //   219970204 方裕森
+    </script>
+</body>
+
+</html>
